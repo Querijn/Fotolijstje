@@ -63,3 +63,4 @@ typings/
 # For greenlock
 configStaging/
 configProd/
+dist/
