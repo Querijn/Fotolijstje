@@ -51,7 +51,7 @@ class Photo {
 		this.hasBeenOnScreen = false;
 		this.isOnScreen = false;
 
-		if (!Photo.resources || !Photo.resources[this.uuid ])
+		if (!Photo.resources || !Photo.resources[this.file])
 			PIXI.Loader.shared.add(file, file).load(this._loader.bind(this));
 		else setTimeout(() => this._loader(null, Photo.resources), 0);
 	}
