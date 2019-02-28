@@ -1,0 +1,28 @@
+{
+  "name": "fotolijst",
+  "version": "0.1.0",
+  "description": "Iets leuks voor mijn huiskamer",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc -p ."
+  },
+  "repository": {
+    "url": "git@github.com:Querijn/Fotolijstje.git",
+    "type": "git"
+  },
+  "author": "Querijn Heijmans <querijn@irule.at>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "fs-extra": "^7.0.1",
+    "greenlock-express": "^2.6.7"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.5",
+    "@types/express": "^4.16.1",
+    "@types/node": "^8.0.22",
+    "typescript": "^3.3.3333",
+    "tslint": "^5.10.0"
+  }
+}
