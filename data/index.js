@@ -1,5 +1,6 @@
 const app = new PIXI.Application(window.innerWidth, window.innerHeight);
 document.body.appendChild(app.view);
+const renderResize = app.screen.height / 1440;
 const maxWidth = 1/8;
 const maxHeight = 1/8;
 const placeDistance = Math.max(app.screen.width, app.screen.height) * 1.1;
@@ -90,33 +91,18 @@ Photo.prototype._loader = function(loader, resources) {
 	
 	this.photo = new PIXI.Graphics();
 	this.photo.beginFill(0xFFFFFF);
-	// this.photo.beginTextureFill(this._gradient('#FFFFFF', '#CFCFCF'));
-	this.photo.drawRect(0, 0, 600, 600 / aspectRatio);
+	this.photo.drawRect(0, 0, renderResize * 600, renderResize * (600 / aspectRatio));
 
 
 	this.sprite.x = this.photo.width * (1/16);
 	this.sprite.y = this.photo.height * (1/16);
 
 	this.sprite.width = this.photo.width * (7/8);
-	this.sprite.height = this.photo.height - 200;
+	this.sprite.height = this.photo.height - renderResize * 200;
 	this.photo.addChild(this.sprite);
 
 	this.ready = true;
 	if (this.onReady) this.onReady();
-}
-
-Photo.prototype._gradient = function(from, to) {
-	if (!this._texture) {
-		const c = document.createElement("canvas");
-		const ctx = c.getContext("2d");
-		const grd = ctx.createLinearGradient(300, 0, 300, 300);
-		grd.addColorStop(0, from);
-		grd.addColorStop(1, to);
-		ctx.fillStyle = grd;
-		ctx.fillRect(0, 0, 600, 600);
-		this._texture = new PIXI.Texture.from(c);
-	}
-	return this._texture;
 }
 
 // TODO
