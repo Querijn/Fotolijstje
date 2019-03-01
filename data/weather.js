@@ -46,7 +46,7 @@ loader.load(setupWeatherIcons);
 function setupWeatherIcons(loader, resources) {
 	for (let iconName in weatherIcons) {
 		weatherIcons[iconName] = Querijn.Text.addImage(resources[iconName].texture);
-		console.log("Loaded weather icon for " + iconName);
+		// console.log("Loaded weather icon for " + iconName);
 	}
 
 	updateWeather();
@@ -61,7 +61,6 @@ function updateWeather() {
 	requestWeather(function (data) {
 
 		let text = "";
-		let y = 0;
 		for (let i = 0; i < data.liveweer.length; i++) {
 
 			if (i !== 0) text += "\n";

@@ -40,7 +40,7 @@ function addPhoto() {
 
 	photo.onReady = function() {
 		photo.run();
-		console.log(photoFile + " was added!");
+		// console.log(photoFile + " was added!");
 	};
 	photos.push(photo);
 }
@@ -112,7 +112,6 @@ window.addEventListener("resize", function() {
 	app.view.style.height = window.innerHeight;
 	backgroundSprite.width = window.innerWidth;
 	backgroundSprite.height = window.innerHeight;
-	
 });
 
 function shuffleArray(a) {
