@@ -3,7 +3,7 @@ document.body.appendChild(app.view);
 const renderResize = app.screen.height / 1440;
 const maxWidth = 1/8;
 const maxHeight = 1/8;
-const placeDistance = Math.max(app.screen.width, app.screen.height) * 1.1;
+const placeDistance = Math.max(app.screen.width, app.screen.height) * 1.717;
 const spawnDelay = 7000;
 const despawnDelay = 45000;
 
@@ -15,10 +15,9 @@ app.stage.addChild(backgroundSprite);
 
 const photos = [];
 let photoSources = null;
-const forward = { x: 0, y: 0 };
+
 const moveAngle = (Math.random() - 0.5) * 45 * 0.0174532925;
-forward.x = Math.cos(moveAngle);
-forward.y = Math.sin(moveAngle);
+const forward = { x: Math.cos(moveAngle), y: Math.sin(moveAngle) };
 
 let timer = -1;
 let curPhoto = 0;
@@ -60,16 +59,16 @@ function Photo(file) {
 };
 		
 Photo.prototype.run  = function() {
-		const randXOffset = Math.random() * app.renderer.width;
-		const randYOffset = Math.random() * app.renderer.height;
-		this.photo.position.x = randXOffset + placeDistance * -forward.x;
-		this.photo.position.y = randYOffset + placeDistance * -forward.y;
-		this.photo.rotation = (Math.random() - 0.5) * 80 * 0.0174532925;
-		this.despawn = despawnDelay;
+	const randXOffset = Math.random() * app.renderer.width;
+	const randYOffset = Math.random() * app.renderer.height;
+	this.photo.position.x = randXOffset + placeDistance * -forward.x;
+	this.photo.position.y = randYOffset + placeDistance * -forward.y;
+	this.photo.rotation = (Math.random() - 0.5) * 80 * 0.0174532925;
+	this.despawn = despawnDelay;
 
-		app.stage.addChild(this.photo);
-		app.ticker.add(this.runner);
-	}
+	app.stage.addChild(this.photo);
+	app.ticker.add(this.runner);
+}
 
 Photo.prototype._update = function() {
 	this.photo.position.x += forward.x * PIXI.ticker.shared.elapsedMS * 0.1;
@@ -86,6 +85,7 @@ Photo.prototype._update = function() {
 
 Photo.prototype._loader = function(loader, resources) {
 	Photo.resources = resources;
+
 	this.sprite = new PIXI.Sprite(resources[this.file].texture);
 	const aspectRatio = this.sprite.width / this.sprite.height;
 	
