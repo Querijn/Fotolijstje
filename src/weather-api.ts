@@ -23,9 +23,16 @@ export default async function addWeatherHandler(server: Server) {
 			return;
 		}
 
-		const requestUrl = `http://weerlive.nl/api/json-data-10min.php?key=${config.key}&locatie=${config.town}`;
-		const request = await fetch(requestUrl);
-		lastQuery = await request.text();
+		const data: { liveweer: object[] } = { liveweer: [] };
+		for (let town of config.towns) {
+			const requestUrl = `http://weerlive.nl/api/json-data-10min.php?key=${config.key}&locatie=${town}`;
+			const request = await fetch(requestUrl);
+
+			const json: { liveweer: object[] } = await request.json();
+			data.liveweer.push(json.liveweer[0]);
+		}
+		
+		lastQuery = JSON.stringify(data);
 		lastQueryTime = currentTime;
 		res.send(lastQuery);
 	})
