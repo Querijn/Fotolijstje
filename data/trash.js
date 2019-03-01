@@ -1,5 +1,6 @@
 function runTrash() {
-	
+const months = [ "januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december" ];
+
 function requestTrashInfo(onReceived) {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -33,12 +34,40 @@ function trashFrame(time) {
 function updateTrash() {
 	requestTrashInfo(function (data) {
 
-		let text = "";
-		for (let i = 0; i < data; i++) {
-
-			if (i !== 0) text += "\n";
+		let text = "Afval:\n";
+		let done = {};
+		let dates = [];
+		
+		for (let i = 0; i < data.length; i++) {
 			const trash = data[i];
-			text += trash.summary;
+			const date = new Date(trash.start);
+			data[i].actualDate = date;
+
+			const today = new Date();
+			today.setHours(0,0,0,0);
+			if (date < today)
+				continue;
+
+			if (done[trash.summary])
+				continue;
+			done[trash.summary] = true;
+
+			dates.push(trash);
+		}
+		
+		dates.sort(function(a, b){
+			return a.actualDate - b.actualDate;
+		});
+
+		let first = true;
+		for (let i = 0; i < dates.length; i++) {
+
+			if (!first) text += "\n";
+			else first = false;
+			
+			const trash = dates[i];
+			const date = trash.actualDate;
+			text += trash.summary + ": " + date.getDate() + " " + months[date.getMonth()];
 		}
 
 		// Somehow when you set text to "", it becomes " ", so I have to put it in another var.
