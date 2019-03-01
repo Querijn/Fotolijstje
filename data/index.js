@@ -10,7 +10,7 @@ const spawnDelay = 7000;
 const despawnDelay = 45000;
 
 const backgroundImage = PIXI.Texture.from('background.jpg');
-const backgroundSprite = new PIXI.TilingSprite(backgroundImage, app.screen.width, app.screen.height);
+const backgroundSprite = new PIXI.extras.TilingSprite(backgroundImage, app.screen.width, app.screen.height);
 backgroundSprite.tileScale.x = 1.5;
 backgroundSprite.tileScale.y = 1.5;
 app.stage.addChild(backgroundSprite);
