@@ -64,4 +64,7 @@ typings/
 configStaging/
 configProd/
 dist/
-data/images/
+data/images/*.jpg
+data/images/*.jpeg
+data/images/*.png
+data/images/*.gif
