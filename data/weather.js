@@ -1,3 +1,5 @@
+function runWeather() {
+
 function requestWeather(onReceived) {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -82,4 +84,6 @@ function updateWeather() {
 	});
 
 	setTimeout(updateWeather, 1000 * 60 * 20);
+};
+
 };

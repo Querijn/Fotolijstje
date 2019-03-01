@@ -1,4 +1,6 @@
-const app = new PIXI.Application(window.innerWidth, window.innerHeight);
+(function() {
+window.app = new PIXI.Application(window.innerWidth, window.innerHeight);
+
 document.body.appendChild(app.view);
 const renderResize = app.screen.height / 1440;
 const maxWidth = 1/8;
@@ -135,3 +137,7 @@ xhttp.onreadystatechange = function() {
 };
 xhttp.open("GET", "images.json", true);
 xhttp.send();
+
+runTrash();
+runWeather();
+})();
