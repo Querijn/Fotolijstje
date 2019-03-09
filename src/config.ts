@@ -1,4 +1,3 @@
-// Weer 
 export default function getConfig() {  return { 
 
 weather: {

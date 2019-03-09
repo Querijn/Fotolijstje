@@ -17,8 +17,11 @@
     "express": "^4.16.4",
     "fs-extra": "^7.0.1",
     "greenlock-express": "^2.6.7",
+    "hoek": "^6.1.2",
     "ical": "^0.5.0",
-    "node-fetch": "^2.3.0"
+    "node-fetch": "^2.3.0",
+    "tough-cookie": ">=2.3.3",
+    "tunnel-agent": "^0.6.0"
   },
   "devDependencies": {
     "@types/express": "^4.16.1",

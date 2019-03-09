@@ -1,6 +1,5 @@
 import Server from './server-app';
 import * as Express from "express";
-import * as path from "path";
 import * as fs from "fs-extra";
 
 export default async function addImagesHandler(server: Server) {
