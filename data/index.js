@@ -37,12 +37,11 @@ app.ticker.add(function(time) {
 
 function addPhoto() {
 	const photoFile = photoSources[curPhoto];
-	curPhoto = (curPhoto + 1) % (photoSources.length - 1);
-	const photo = new Photo("images/" + photoFile);
+	curPhoto = (curPhoto + 1) % (Math.max(2, photoSources.length) - 1);
+	const photo = new Photo("images/pictures/" + photoFile);
 
 	photo.onReady = function() {
 		photo.run();
-		// console.log(photoFile + " was added!");
 	};
 	photos.push(photo);
 }
@@ -127,7 +126,7 @@ function shuffleArray(a) {
     return a;
 }
 
-setTimeout(window.location.reload, 1000 * 60 * 30); // 30 min
+setTimeout(function() { window.location.reload(); }, 1000 * 60 * 30); // 30 min
 
 let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
