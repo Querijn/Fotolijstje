@@ -19,7 +19,7 @@
     "greenlock-express": "^2.6.7",
     "hoek": "^6.1.2",
     "ical": "^0.6.0",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.1",
     "tough-cookie": ">=2.3.3",
     "tunnel-agent": "^0.6.0"
   },
